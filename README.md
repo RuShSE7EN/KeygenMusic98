@@ -17,6 +17,7 @@ A simple GUI tool that captures and downloads tracker-style music from [keygenmu
 
 ## 📸 Preview
 *(Insert screenshot here if available)*
+![image](images/logo.png)
 
 ---
 
@@ -75,3 +76,4 @@ RuSh_SE7EN
 ## 🪪 License
 
 MIT License – free to use, modify, and distribute.
+
