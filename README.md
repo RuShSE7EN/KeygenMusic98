@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🎵 KeygenMusic 98
 
 A simple GUI tool that captures and downloads tracker-style music from [keygenmusic.tk](https://keygenmusic.tk). Inspired by the nostalgic design of classic Windows 98 keygens.
@@ -76,7 +75,3 @@ RuSh_SE7EN
 ## 🪪 License
 
 MIT License – free to use, modify, and distribute.
-=======
-# KeygenMusic98
-A GUI-based tool for grabbing and downloading music from keygenmusic.tk
->>>>>>> 4bfb8dd7e874d8a689c48d4b1478c1ade791ab2c
