@@ -1,0 +1,5 @@
+selenium==4.21.0
+selenium-wire==5.1.0
+requests==2.31.0
+pyperclip==1.8.2
+Pillow==10.3.0
