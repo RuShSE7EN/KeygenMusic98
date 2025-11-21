@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog
-from seleniumwire import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
+""" from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options """
 import threading
 import requests
 import os
@@ -179,22 +179,37 @@ class KeygenMusic98:
 
     def run(self):
         self.root.mainloop()
-
+from selenium.webdriver.chrome.service import Service
 
 def start_browser(gui: KeygenMusic98):
-    chrome_options = Options()
-    chrome_options.add_experimental_option("detach", False)
+    chrome_options = webdriver.ChromeOptions()
+
+    # اضافه کردن performance logs به ChromeOptions
+    chrome_options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
+
     service = Service(CHROMEDRIVER_PATH)
+
     gui.driver = webdriver.Chrome(service=service, options=chrome_options)
+
     gui.driver.get(SITE_URL)
 
     while True:
         time.sleep(1)
-        for req in gui.driver.requests:
-            if req.response and any(req.url.endswith(ext) for ext in ALLOWED_EXTENSIONS):
-                if req.url not in gui.found_links:
-                    gui.found_links.add(req.url)
-                    gui.update_link(req.url)
+
+        logs = gui.driver.get_log("performance")
+
+        for entry in logs:
+            message = entry["message"]
+
+            if "Network.responseReceived" in message and any(ext in message for ext in ALLOWED_EXTENSIONS):
+                import json
+                msg = json.loads(message)["message"]["params"]
+                url = msg["response"]["url"]
+
+                if url not in gui.found_links:
+                    gui.found_links.add(url)
+                    gui.update_link(url)
+
 
 
 def main():
